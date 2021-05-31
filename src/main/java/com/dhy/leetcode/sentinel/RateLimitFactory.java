@@ -34,12 +34,14 @@ public class RateLimitFactory {
         if (url==null||"".equals(url)) {
             throw new RuntimeException("url不能为空");
         }
-        RateLimitObject rateLimitObject = limitObjectMap.get(url);
-        if (rateLimitObject==null) {
-            rateLimitObject = new RateLimitObject(windowSize);
-            limitObjectMap.put(url,rateLimitObject);
-        }
-        return  rateLimitObject.isOverLimit(curCount);
+        limitObjectMap.putIfAbsent(url,new RateLimitObject(windowSize));
+        return limitObjectMap.get(url).isOverLimit(curCount);
+//        RateLimitObject rateLimitObject = limitObjectMap.get(url);
+//        if (rateLimitObject==null) {
+//            rateLimitObject = new RateLimitObject(windowSize);
+//            limitObjectMap.put(url,rateLimitObject);
+//        }
+       // return  rateLimitObject.isOverLimit(curCount);
     }
 
     public static boolean isOverLimit(String url,int curCount){
