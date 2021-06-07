@@ -10,7 +10,8 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * 漏桶算法
- * 桶的容量是固定的，比如是1000个并发，一个请求必须获取成功一个permit才能通过，否则等待；请求结束后要释放 permit到桶内。
+ * 桶的容量是固定的，比如是1000个并发，一个请求必须获取成功一个permit才能通过，否则等待；
+ * 请求结束后要释放 permit到桶内。
  */
 public class RateLimitForLouTong {
 
@@ -22,13 +23,14 @@ public class RateLimitForLouTong {
      * @return
      */
     public static  boolean  acquirePermit(String url){
-        if(map.get(url)==null){
-            synchronized (RateLimitForLouTong.class){
-                if(map.get(url)==null){
-                    map.put(url,new Semaphore(10));
-                }
-            }
-        }
+        map.putIfAbsent(url,new Semaphore(10));
+//        if(map.get(url)==null){
+//            synchronized (RateLimitForLouTong.class){
+//                if(map.get(url)==null){
+//                    map.put(url,new Semaphore(10));
+//                }
+//            }
+//        }
         try {
             //超时时间3秒，3秒内获得了许可返回true，超时返回false
             return map.get(url).tryAcquire();
