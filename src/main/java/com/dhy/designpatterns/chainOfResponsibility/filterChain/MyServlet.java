@@ -1,4 +1,4 @@
-package com.dhy.designpatterns.chainOfResponsibility;
+package com.dhy.designpatterns.chainOfResponsibility.filterChain;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

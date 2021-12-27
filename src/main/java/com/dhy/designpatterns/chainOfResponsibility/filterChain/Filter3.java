@@ -1,9 +1,9 @@
-package com.dhy.designpatterns.chainOfResponsibility;
+package com.dhy.designpatterns.chainOfResponsibility.filterChain;
 
 import javax.servlet.*;
 import java.io.IOException;
 
-public class Filter1 implements Filter {
+public class Filter3 implements Filter {
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -12,7 +12,7 @@ public class Filter1 implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        System.out.println("过滤器1");
+        System.out.println("过滤器3");
 
         //能调用下一个过滤器的关键，如果没有这一句，将中断（跳出）过滤器链
         filterChain.doFilter(servletRequest, servletResponse);
