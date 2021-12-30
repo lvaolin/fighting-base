@@ -6,39 +6,43 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
-public class Employee {
+public class Leader implements IComponent{
    private String name;
    private String dept;
    private int salary;
-   private List<Employee> subordinates;
+   private List<IComponent> subordinates;
  
    //构造函数
-   public Employee(String name,String dept, int sal) {
+   public Leader(String name, String dept, int sal) {
       this.name = name;
       this.dept = dept;
       this.salary = sal;
-      subordinates = new ArrayList<Employee>();
+      subordinates = new ArrayList<IComponent>();
    }
- 
-   public void add(Employee e) {
+
+   @Override
+   public void add(IComponent e) {
       subordinates.add(e);
    }
- 
-   public void remove(Employee e) {
+
+   @Override
+   public void remove(IComponent e) {
       subordinates.remove(e);
    }
- 
-   public List<Employee> getSubordinates(){
+
+   @Override
+   public List<IComponent> getSubordinates(){
      return subordinates;
    }
- 
+
+   @Override
    public void print(int depth){
       String pre = "";
       for(int i=0; i<depth; i++) {
          pre +="-";
       }
       System.out.println(pre+":"+name+","+dept+","+salary);
-      for (Employee subordinate : subordinates) {
+      for (IComponent subordinate : subordinates) {
          subordinate.print(depth+1);
       }
 

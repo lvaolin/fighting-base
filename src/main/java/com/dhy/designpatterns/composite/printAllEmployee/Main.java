@@ -2,20 +2,20 @@ package com.dhy.designpatterns.composite.printAllEmployee;
 
 public class Main {
    public static void main(String[] args) {
-      Employee CEO = new Employee("John","CEO", 30000);
+      Leader root = new Leader("John","CEO", 30000);
  
-      Employee headSales = new Employee("Robert","Head Sales", 20000);
+      Leader headSales = new Leader("Robert","Head Sales", 20000);
  
-      Employee headMarketing = new Employee("Michel","Head Marketing", 20000);
- 
-      Employee clerk1 = new Employee("Laura","Marketing", 10000);
-      Employee clerk2 = new Employee("Bob","Marketing", 10000);
- 
-      Employee salesExecutive1 = new Employee("Richard","Sales", 10000);
-      Employee salesExecutive2 = new Employee("Rob","Sales", 10000);
- 
-      CEO.add(headSales);
-      CEO.add(headMarketing);
+      Leader headMarketing = new Leader("Michel","Head Marketing", 20000);
+
+      Worker clerk1 = new Worker("Laura","Worker Marketing", 10000);
+      Worker clerk2 = new Worker("Bob","Worker Marketing", 10000);
+
+      Worker salesExecutive1 = new Worker("Richard","Worker Sales", 10000);
+      Worker salesExecutive2 = new Worker("Rob","Worker Sales", 10000);
+
+      root.add(headSales);
+      root.add(headMarketing);
  
       headSales.add(salesExecutive1);
       headSales.add(salesExecutive2);
@@ -24,7 +24,7 @@ public class Main {
       headMarketing.add(clerk2);
  
       //打印该组织的所有员工
-      CEO.print(1);
+      root.print(1);
 
    }
 }
