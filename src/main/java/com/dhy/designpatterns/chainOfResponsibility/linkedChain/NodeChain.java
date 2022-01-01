@@ -6,5 +6,7 @@ package com.dhy.designpatterns.chainOfResponsibility.linkedChain;
  * @Author lvaolin
  * @Date 2021/12/29 下午2:12
  */
-public class Responsible {
+public interface NodeChain {
+
+    void doSave(GlCertificate glCertificate);
 }
