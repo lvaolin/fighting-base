@@ -1,4 +1,4 @@
-package com.dhy.decorator;
+package com.dhy.designpatterns.decorator.demo1;
 
 /**
  * 饼装饰器

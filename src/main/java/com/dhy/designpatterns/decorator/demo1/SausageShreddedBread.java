@@ -1,4 +1,4 @@
-package com.dhy.decorator;
+package com.dhy.designpatterns.decorator.demo1;
 
 /**
  * 香肠手抓饼
