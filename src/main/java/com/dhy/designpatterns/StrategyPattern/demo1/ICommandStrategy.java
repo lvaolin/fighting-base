@@ -1,4 +1,4 @@
-package com.dhy.designpatterns.StrategyPattern;
+package com.dhy.designpatterns.StrategyPattern.demo1;
 
 public interface ICommandStrategy {
     /**
