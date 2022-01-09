@@ -24,6 +24,6 @@ public class Client {
         Notifier heWwNotifier = new WeWorkNotifier(heWcNotifier);
         Notifier heMailNotifier = new MailNotifier(heWwNotifier);
         Notifier heSmsNotifier = new SmsNotifier(heMailNotifier);
-        heSmsNotifier.send("内存爆了");
+        heSmsNotifier.send("硬盘爆了");
     }
 }

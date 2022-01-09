@@ -3,7 +3,12 @@ package com.dhy.designpatterns.decorator.demo1;
 /**
  * 手抓饼
  */
-public class ShreddedBread extends  Bread {
+public class ShreddedBread extends    BaseBread {
+
+
+    public ShreddedBread(Bread bread){
+        setBread(bread);
+    }
 
     /**
      * 得到手抓饼的描述
@@ -11,7 +16,12 @@ public class ShreddedBread extends  Bread {
      */
     @Override
     public String getDesc(){
-        return "手抓饼";
+        if (getBread()!=null) {
+            return "手抓"+getBread().getDesc();
+
+        }else{
+            return "手抓";
+        }
     }
 
     /**
@@ -20,6 +30,11 @@ public class ShreddedBread extends  Bread {
      */
     @Override
     public  int getPrice(){
-        return  5;
+        if (getBread()!=null) {
+
+            return  5+getBread().getPrice();
+        }else{
+            return  5;
+        }
     }
 }

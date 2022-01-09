@@ -4,17 +4,17 @@ package com.dhy.designpatterns.decorator.demo1;
 /**
  * 饼
  */
-public abstract class Bread {
+public interface  Bread {
 
     /**
      * 得到饼的配料
      * @return
      */
-    public abstract String getDesc();
+     String getDesc();
 
     /**
      * 得到饼价格
      * @return
      */
-    public abstract  int getPrice();
+      int getPrice();
 }
