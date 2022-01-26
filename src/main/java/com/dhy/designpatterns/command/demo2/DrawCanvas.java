@@ -1,7 +1,6 @@
-package com.dhy.designpatterns.command;
+package com.dhy.designpatterns.command.demo2;
 
 import java.awt.*;
-import java.util.Random;
 
 /**
  * 画布

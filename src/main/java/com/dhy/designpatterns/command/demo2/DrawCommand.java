@@ -1,4 +1,4 @@
-package com.dhy.designpatterns.command;
+package com.dhy.designpatterns.command.demo2;
 
 import java.awt.Point;
 
