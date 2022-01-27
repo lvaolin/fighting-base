@@ -1,36 +1,52 @@
 package com.dhy.designpatterns.IteratorPattern;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MyList implements  MyCollection{
+
+    private List list = new ArrayList();
     @Override
     public void add(Object o) {
-
+         list.add(o);
     }
 
     @Override
-    public int remove(Object o) {
-        return 0;
+    public boolean remove(Object o) {
+        return list.remove(o);
     }
 
     @Override
     public int size() {
-        return 0;
+        return list.size();
     }
 
     @Override
+    public Object get(int index) {
+        return list.get(index);
+    }
+
+
+    @Override
     public MyIterator iterator() {
-        return new MyListIterator();
+        return new MyListIterator(this);
     }
 
     class MyListIterator implements MyIterator{
 
+        private MyList list;
+        private int currentIndex = 0;
+        public MyListIterator( MyList list){
+            this.list = list;
+        }
         @Override
         public boolean hasNext() {
-            return false;
+            return list.size()>0&&currentIndex<list.size();
         }
 
         @Override
         public Object next() {
-            return null;
+            return list.get(currentIndex++);
         }
     }
 }
