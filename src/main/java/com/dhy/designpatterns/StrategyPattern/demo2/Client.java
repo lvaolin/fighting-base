@@ -12,24 +12,18 @@ public class Client {
 
     public static void main(String[] args) {
 
-        String routeType = "shortest";
+        //策略上下文
         RouteStrategyContext routeStrategyContext = new RouteStrategyContext();
-        if ("shortest".equalsIgnoreCase(routeType)) {
-            System.out.println("最短路线：");
-            RouteStrategy shortestRouteStrategy = new ShortestRouteStrategy();
-            routeStrategyContext.setRouteStrategy(shortestRouteStrategy);
-            List<String> routes = routeStrategyContext.buildRoute("a", "e");
-            routes.stream().forEach((route)->System.out.println(route));
-        }
 
-        routeType = "fastest";
-        if ("fastest".equalsIgnoreCase(routeType)) {
-            System.out.println("最快路线：");
-            RouteStrategy shortestRouteStrategy = new FastestRouteStrategy();
-            routeStrategyContext.setRouteStrategy(shortestRouteStrategy);
-            List<String> routes = routeStrategyContext.buildRoute("a", "e");
-            routes.stream().forEach((route)->System.out.println(route));
-        }
+        //切换到：距离最短策略
+        routeStrategyContext.setRouteStrategy(new ShortestRouteStrategy());
+        List<String> routes = routeStrategyContext.buildRoute("a", "e");
+        routes.stream().forEach((route)->System.out.println(route));
+
+        //切换到：花费时间最少策略
+        routeStrategyContext.setRouteStrategy(new FastestRouteStrategy());
+        routes = routeStrategyContext.buildRoute("a", "e");
+        routes.stream().forEach((route)->System.out.println(route));
 
 
 

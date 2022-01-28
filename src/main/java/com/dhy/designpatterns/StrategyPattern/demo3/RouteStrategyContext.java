@@ -17,6 +17,8 @@ public class RouteStrategyContext {
      private RouteStrategy routeStrategy;
 
      public RouteStrategyContext(String routeType){
+
+         //和demo2的区别就是把 策略是实例化放到了 上下文内部，客户端无须关注实例化过程
          if ("shortest".equalsIgnoreCase(routeType)) {
              System.out.println("最短路线：");
              RouteStrategy shortestRouteStrategy = new ShortestRouteStrategy();

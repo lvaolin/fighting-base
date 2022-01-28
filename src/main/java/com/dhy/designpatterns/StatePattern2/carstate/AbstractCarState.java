@@ -14,7 +14,7 @@ public abstract class AbstractCarState {
     public void setCarContext(CarContext carContext) {
         this.carContext = carContext;
     }
-
+//对上下文的引用也可以放到子类中
     private CarContext carContext;
 
 
