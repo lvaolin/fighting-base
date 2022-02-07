@@ -1,4 +1,4 @@
-package com.dhy.designpatterns.mediator;
+package com.dhy.designpatterns.mediator.demo2;
 
 
 import java.util.*;

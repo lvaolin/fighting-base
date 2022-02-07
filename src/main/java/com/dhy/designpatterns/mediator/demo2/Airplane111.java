@@ -1,4 +1,4 @@
-package com.dhy.designpatterns.mediator;
+package com.dhy.designpatterns.mediator.demo2;
 
 /**
  * @Project fighting-core
@@ -6,10 +6,10 @@ package com.dhy.designpatterns.mediator;
  * @Author lvaolin
  * @Date 2022/1/13 下午6:25
  */
-public class Airplane110 implements IAirplane{
+public class Airplane111 implements IAirplane{
 
     private IControlTower controlTower;
-    public Airplane110(IControlTower controlTower){
+    public Airplane111(IControlTower controlTower){
         this.controlTower = controlTower;
     }
     @Override
