@@ -1,4 +1,4 @@
-package com.dhy.designpatterns.IteratorPattern;
+package com.dhy.designpatterns.IteratorPattern.demo1;
 
 import lombok.SneakyThrows;
 
