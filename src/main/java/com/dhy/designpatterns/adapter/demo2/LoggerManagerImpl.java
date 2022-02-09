@@ -2,6 +2,7 @@ package com.dhy.designpatterns.adapter.demo2;
 
 import com.dhy.designpatterns.adapter.demo2.jdklog.JdkLoggerAdapter;
 import com.dhy.designpatterns.adapter.demo2.jdklog.JdkLoggerManagerAdapter;
+import com.dhy.designpatterns.adapter.demo2.log4j.Log4jManagerAdapter;
 
 /**
  * @Title LoggerManager
@@ -11,21 +12,21 @@ import com.dhy.designpatterns.adapter.demo2.jdklog.JdkLoggerManagerAdapter;
  **/
 public class LoggerManagerImpl implements ILoggerManager{
     private String logType;//环境变量传入
-    private JdkLoggerManagerAdapter jdkLoggerManagerAdapter = null;
+    private ILoggerManager loggerManager = null;
 
     public LoggerManagerImpl(String logType){
         this.logType = logType;
         if ("jdklog".equalsIgnoreCase(logType)) {
-            jdkLoggerManagerAdapter = new JdkLoggerManagerAdapter();
+            loggerManager = new JdkLoggerManagerAdapter();
         }
         if ("log4j".equalsIgnoreCase(logType)) {
-            jdkLoggerManagerAdapter = new JdkLoggerManagerAdapter();
+            loggerManager = new Log4jManagerAdapter();
         }
         //......
     }
 
     @Override
     public ILogger getLogger(String name) {
-        return jdkLoggerManagerAdapter.getLogger(name);
+        return loggerManager.getLogger(name);
     }
 }
