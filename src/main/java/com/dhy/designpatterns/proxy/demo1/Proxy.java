@@ -1,4 +1,4 @@
-package com.dhy.designpatterns.proxy;
+package com.dhy.designpatterns.proxy.demo1;
 
 /**
  * @Title Proxy
@@ -9,11 +9,12 @@ package com.dhy.designpatterns.proxy;
  * @Author lvaolin
  * @Date 2022/1/28 18:56
  **/
-public class Proxy {
+public class Proxy implements ServiceIF{
     private ServiceIF targetService;
     public Proxy(ServiceIF serviceIF){
         this.targetService = serviceIF;
     }
+    @Override
     public String method1() {
         System.out.println(targetService.getClass().getCanonicalName()+"被调用");
         long beginTime = System.currentTimeMillis();

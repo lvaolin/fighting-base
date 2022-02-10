@@ -1,4 +1,4 @@
-package com.dhy.designpatterns.proxy;
+package com.dhy.designpatterns.proxy.demo1;
 
 /**
  * @Title Client
