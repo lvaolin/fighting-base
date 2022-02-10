@@ -1,4 +1,4 @@
-package com.dhy.designpatterns.templete.demo2;
+package com.dhy.designpatterns.practice.demo1;
 
 /**
  * @Project fighting-core
@@ -13,7 +13,7 @@ package com.dhy.designpatterns.templete.demo2;
  * @Author lvaolin
  * @Date 2022/2/9 上午10:49
  */
-public class Main {
+public class MainP1 {
     public static void main(String[] args) {
         ServiceBase serviceBase = new MyService1();
         serviceBase.templateMethod();

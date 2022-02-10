@@ -1,4 +1,4 @@
-package com.dhy.designpatterns.FactoryMethodPattern;
+package com.dhy.designpatterns.FactoryMethodPattern.demo1;
 
 /**
  * @Project fighting-core

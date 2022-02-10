@@ -1,5 +1,10 @@
-package com.dhy.designpatterns.FactoryMethodPattern;
+package com.dhy.designpatterns.FactoryMethodPattern.demo1;
 
+
+import com.dhy.designpatterns.FactoryMethodPattern.demo1.FactoryHuawei;
+import com.dhy.designpatterns.FactoryMethodPattern.demo1.FactoryXiaomi;
+import com.dhy.designpatterns.FactoryMethodPattern.demo1.IFactory;
+import com.dhy.designpatterns.FactoryMethodPattern.demo1.IProduct;
 
 public class Test {
 
