@@ -19,6 +19,7 @@ public class TestLamda1 {
     }
     public static void main(String[] args) {
 
+        //输入为String类型，输出为Integer类型
         Function<String, Integer> stringIntegerFunction = Integer::parseInt;
         Integer apply = stringIntegerFunction.apply("1000");
         System.out.println(apply);

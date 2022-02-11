@@ -4,7 +4,7 @@ import java.util.function.BiConsumer;
 
 /**
  * @Title TestBiConsumer
- * @Description
+ * @Description  消费者实例
  * @Author lvaolin
  * @Date 2021/2/14 21:55
  **/

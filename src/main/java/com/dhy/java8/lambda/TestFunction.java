@@ -4,7 +4,7 @@ import java.util.function.Function;
 
 /**
  * @Title TestFunction
- * @Description
+ * @Description  一个输入参数， 有返回值
  * @Author lvaolin
  * @Date 2021/2/14 22:02
  **/

@@ -5,6 +5,7 @@ import java.util.function.Consumer;
 /**
  * @Title TestConsumer
  * @Description  测试消费者接口
+ * 一个输入参数，无返回值
  * @Author lvaolin
  * @Date 2021/2/14 21:04
  **/
