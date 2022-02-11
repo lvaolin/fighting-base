@@ -50,7 +50,7 @@ public class ApplicationFilterChain implements FilterChain {
                 //最后一个参数是关键
                 //这里面并没有使用for循环把所有的过滤器调用一遍，
                 //而是用了一个递归操作，通过传递当前FilterChain实例，将调用下下一个过滤器的决定权交给了下一个过滤器
-
+                //如果不使用这种传递  链条 的方式的话， 在过滤器中就无法实现 性能计时监控 的功能了。
                 filter.doFilter(request, response, this);
             } catch (IOException | ServletException | RuntimeException e) {
                 throw e;

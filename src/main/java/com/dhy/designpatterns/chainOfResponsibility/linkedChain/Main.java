@@ -22,7 +22,9 @@ public class Main {
 
         //组装检查链
         MyNodeChain myNodeChain = new MyNodeChain();
+        //目标服务
         myNodeChain.setGlCertificateService(new GlCertificateService());
+        //头节点
         myNodeChain.setNode(f1Node);
 
         //保存凭证

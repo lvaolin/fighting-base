@@ -13,6 +13,7 @@ public class FilterResponseTime implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         long start = System.currentTimeMillis();
         try {
+            //交给下一个链节点
             filterChain.doFilter(servletRequest, servletResponse);
         } finally {
             long timeCost = System.currentTimeMillis() - start;
