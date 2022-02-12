@@ -7,4 +7,4 @@
  * @Author lvaolin
  * @Date 2022/1/28 22:03
  **/
-package com.dhy.designpatterns.visitor;
+package com.dhy.designpatterns.visitor.demo1;

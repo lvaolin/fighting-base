@@ -1,6 +1,10 @@
-package com.dhy.designpatterns.visitor;
+package com.dhy.designpatterns.visitor.demo1;
 
-public class Manager extends Employee { //这类人物的职责非常明确：业绩
+/**
+ * 项目经理
+ */
+public class EmployeeManager extends Employee {
+    //这类人物的职责非常明确：业绩
     private String performance;
 
     public String getPerformance() {
