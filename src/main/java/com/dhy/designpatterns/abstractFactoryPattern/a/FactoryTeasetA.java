@@ -16,12 +16,10 @@ public class FactoryTeasetA implements FactoryTeaset {
     public Teapot getTeapot() {
         return new TeapotA();
     }
-
     @Override
     public Teacup getTeacup() {
         return new TeacupA();
     }
-
     @Override
     public Tea getTea() {
         return new TeaA();

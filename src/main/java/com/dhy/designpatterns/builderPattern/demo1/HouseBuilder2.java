@@ -1,4 +1,4 @@
-package com.dhy.designpatterns.builderPattern;
+package com.dhy.designpatterns.builderPattern.demo1;
 
 /**
  * @Title HouseBuilder
@@ -6,43 +6,43 @@ package com.dhy.designpatterns.builderPattern;
  * @Author lvaolin
  * @Date 2022/1/1 22:43
  **/
-public class HouseBuilder1 implements HouseBuilder {
+public class HouseBuilder2 implements HouseBuilder {
 
     private  House house = new House();
 
     @Override
     public void builderWalls() {
-        System.out.println("walls1");
+        System.out.println("walls2");
     }
 
     @Override
     public void builderDoors() {
-        System.out.println("builderDoors1");
+        System.out.println("builderDoors2");
     }
 
     @Override
     public void builderWindows() {
-        System.out.println("builderWindows1");
+        System.out.println("builderWindows2");
     }
 
     @Override
     public void builderRoof() {
-        System.out.println("builderRoof1");
+        System.out.println("builderRoof2");
     }
 
     @Override
     public void builderGarage() {
-        System.out.println("builderGarage1");
+        System.out.println("builderGarage2");
     }
 
     @Override
     public void builderSwimmingPool() {
-        System.out.println("builderSwimmingPool1");
+        System.out.println("builderSwimmingPool2");
     }
 
     @Override
     public void builderGarden() {
-        System.out.println("builder garden1");
+        System.out.println("builder garden2");
     }
 
     @Override
@@ -50,8 +50,4 @@ public class HouseBuilder1 implements HouseBuilder {
         return house;
     }
 
-    @Override
-    public void reset() {
-        house = new House();
-    }
 }

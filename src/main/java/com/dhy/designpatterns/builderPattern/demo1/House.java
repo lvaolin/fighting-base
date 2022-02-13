@@ -1,4 +1,4 @@
-package com.dhy.designpatterns.builderPattern;
+package com.dhy.designpatterns.builderPattern.demo1;
 
 import lombok.Data;
 
@@ -19,24 +19,24 @@ public class House {
     private Garden garden;
 
 
-    class SwimmingPool {
+    static class SwimmingPool {
     }
 
-    class Garden {
+    static class Garden {
     }
 
-    class Wall {
+    static class Wall {
     }
 
-    class Door {
+    static class Door {
     }
 
-    class Window {
+    static class Window {
     }
 
-    class Roof {
+    static class Roof {
     }
 
-    class Garage {
+    static class Garage {
     }
 }

@@ -1,4 +1,4 @@
-package com.dhy.designpatterns.builderPattern;
+package com.dhy.designpatterns.builderPattern.demo1;
 
 /**
  * @Title HouseBuilder
@@ -32,5 +32,4 @@ public interface HouseBuilder {
 
     House getResult();
 
-    void reset();
 }

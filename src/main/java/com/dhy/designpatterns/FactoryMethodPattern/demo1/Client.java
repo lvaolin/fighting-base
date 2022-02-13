@@ -6,7 +6,7 @@ import com.dhy.designpatterns.FactoryMethodPattern.demo1.FactoryXiaomi;
 import com.dhy.designpatterns.FactoryMethodPattern.demo1.IFactory;
 import com.dhy.designpatterns.FactoryMethodPattern.demo1.IProduct;
 
-public class Test {
+public class Client {
 
     public static void main(String[] args) {
         IFactory factory;

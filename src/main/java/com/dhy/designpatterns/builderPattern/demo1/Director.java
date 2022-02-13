@@ -1,4 +1,4 @@
-package com.dhy.designpatterns.builderPattern;
+package com.dhy.designpatterns.builderPattern.demo1;
 
 /**
  * @Title Director
@@ -13,9 +13,6 @@ public class Director {
         this.houseBuilder = houseBuilder;
     }
 
-    void changeBuilder(HouseBuilder houseBuilder){
-        this.houseBuilder = houseBuilder;
-    }
 
     House builder(){
         houseBuilder.builderDoors();
