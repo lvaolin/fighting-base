@@ -3,7 +3,7 @@ package com.dhy.akka;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @Title Main
+ * @Title Client
  * @Description
  * @Author lvaolin
  * @Date 2022/1/2 22:31

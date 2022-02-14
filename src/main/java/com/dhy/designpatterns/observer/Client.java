@@ -8,7 +8,6 @@ import java.util.concurrent.CountDownLatch;
  */
 public class Client {
 
-
     public static void main(String[] args) throws InterruptedException {
 
         //注册监听者

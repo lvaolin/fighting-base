@@ -10,7 +10,7 @@ import java.util.concurrent.ThreadLocalRandom;
  * @Author lvaolin
  * @Date 2022/1/17 下午7:15
  */
-public class Game {
+public class Client {
 
     public static void main(String[] args) {
         FlyweightFactory flyweightFactory = new FlyweightFactory();
@@ -25,7 +25,5 @@ public class Game {
             list.add(movingBullet);
             System.out.println(movingBullet.toString());
         }
-
-
     }
 }

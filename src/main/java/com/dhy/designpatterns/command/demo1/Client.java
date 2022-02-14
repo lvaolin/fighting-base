@@ -8,7 +8,6 @@ package com.dhy.designpatterns.command.demo1;
  **/
 public class Client {
     public static void main(String[] args) {
-
         ICommand commandSave = new CommandSave("user1",new ReceiveSave());
         Invoker invoker1 = new Invoker(commandSave);
         invoker1.invoke();
@@ -16,7 +15,5 @@ public class Client {
         ICommand commandDelete = new CommandDelete("user1", new ReceiveDelete());
         Invoker invoker2 = new Invoker(commandDelete);
         invoker2.invoke();
-
-
     }
 }

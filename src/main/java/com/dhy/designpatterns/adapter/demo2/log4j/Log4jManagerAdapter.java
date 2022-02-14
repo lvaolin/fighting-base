@@ -11,12 +11,12 @@ import com.dhy.designpatterns.adapter.demo2.ILoggerManager;
  **/
 public class Log4jManagerAdapter implements ILoggerManager {
 
-    private Log4jFactory jdkLoggerFactory;
+    private Log4jFactory factory = new Log4jFactory();
 
     @Override
     public ILogger getLogger(String name) {
         //参数转换
-        Log4jAdapter.Log4jLogger logger = jdkLoggerFactory.getLogger(name);
+        Log4jAdapter.Log4jLogger logger = factory.getLogger(name);
         //类型转换
         Log4jAdapter jdkLoggerAdapter = new Log4jAdapter();
         jdkLoggerAdapter.setLog4jLogger(logger);

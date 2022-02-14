@@ -1,30 +1,35 @@
 package com.dhy.designpatterns.StatePattern2.order;
 
 /**
- * @Title OrderSubmittedState
+ * @Title 已发货状态
  * @Description
  * @Author lvaolin
  * @Date 2022/1/28 12:27
  **/
-public class OrderDeliveredState extends AbstractOrder{
+public class OrderDeliveredState extends OrderState {
     @Override
-    void submitted() {
-
+    void submit() {
+        System.out.println("发货态下不能提交");
     }
-
     @Override
-    void payed() {
-
+    void delete() {
+        System.out.println("发货态下不能删除");
     }
-
     @Override
-    void delivered() {
-        System.out.println("订单已发货");
+    void cancel() {
+        System.out.println("发货态下不能取消");
     }
-
     @Override
-    void received() {
-        System.out.println("订单已收货");
-        super.getOrderContext().setCurrentState(OrderContext.receivedState);
+    void pay() {
+        System.out.println("发货态下不能支付");
+    }
+    @Override
+    void deliver() {
+        System.out.println("发货态下不能发货");
+    }
+    @Override
+    void receive() {
+        System.out.println("确认收货,由发货态进入确认收货态");
+        getOrderStateManager().setCurrentState(OrderStateManager.receivedState);
     }
 }

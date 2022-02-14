@@ -6,17 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
-public class Leader implements IComponent{
-   private String name;
-   private String dept;
-   private int salary;
+public class Department implements IComponent{
+   private String departmentName;
    private List<IComponent> subordinates;
  
    //构造函数
-   public Leader(String name, String dept, int sal) {
-      this.name = name;
-      this.dept = dept;
-      this.salary = sal;
+   public Department(String departmentName) {
+      this.departmentName = departmentName;
       subordinates = new ArrayList<IComponent>();
    }
 
@@ -39,10 +35,10 @@ public class Leader implements IComponent{
    public void print(int depth){
       String pre = "";
       for(int i=0; i<depth; i++) {
-         pre +="-";
+         pre +="----";
       }
-      System.out.println(pre+":"+name+","+dept+","+salary);
-      for (IComponent subordinate : subordinates) {
+      System.out.println(pre+"部门名称:"+departmentName);
+      for (IComponent subordinate : getSubordinates()) {
          subordinate.print(depth+1);
       }
 

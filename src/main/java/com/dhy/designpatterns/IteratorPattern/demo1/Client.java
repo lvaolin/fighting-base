@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
  * 4、在容器实现类内部定义 迭代器实现类（内部类） MyListIterator 实现 MyIterator 接口
  * 5、
  */
-public class Main {
+public class Client {
 
     public static void main(String[] args) throws InterruptedException {
 

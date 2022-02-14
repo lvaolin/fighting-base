@@ -3,7 +3,7 @@ package com.dhy.leetcode.sentinel;
 /**
  *
  * 流量限流算法：滑动窗口算法
- * Main.java
+ * Client.java
  * 1、模拟客户端的请求，
  * 2、直接取RateLimitFactory.pass 判断能否通过，
  * 3、可以通过则使RateLimitFactory.requestCount加一

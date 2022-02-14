@@ -1,15 +1,13 @@
 package com.dhy.designpatterns.chainOfResponsibility.linkedChain;
 
 /**
- * @Title Main
+ * @Title Client
  * @Description
  * @Author lvaolin
  * @Date 2022/1/1 16:47
  **/
-public class Main {
-
+public class Client {
     public static void main(String[] args) {
-
         //凭证信息
         GlCertificate glCertificate = new GlCertificate();
 
@@ -26,11 +24,8 @@ public class Main {
         myNodeChain.setGlCertificateService(new GlCertificateService());
         //头节点
         myNodeChain.setNode(f1Node);
-
         //保存凭证
         myNodeChain.doSave(glCertificate);
-
-
     }
 
 }

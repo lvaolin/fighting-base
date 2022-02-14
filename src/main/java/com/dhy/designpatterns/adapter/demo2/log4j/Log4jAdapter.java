@@ -3,35 +3,28 @@ package com.dhy.designpatterns.adapter.demo2.log4j;
 import com.dhy.designpatterns.adapter.demo2.ILogger;
 
 /**
- * @Title JdkLogger
+ * @Title Log4jAdapter
  * @Description
  * @Author lvaolin
  * @Date 2022/1/9 16:20
  **/
 public class Log4jAdapter implements ILogger {
-
-
-
-    private Log4jLogger log4jLogger;
-
+    private Log4jLogger log4jLogger = new Log4jLogger();
     @Override
     public void debug(String msg) {
         //参数转换
         log4jLogger.debug(msg);
     }
-
     @Override
     public void info(String msg) {
         //参数转换
         log4jLogger.info(msg);
     }
-
     @Override
     public void warn(String msg) {
         //参数转换
          log4jLogger.warn(msg);
     }
-
     @Override
     public void error(String msg) {
         //参数转换

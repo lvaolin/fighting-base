@@ -10,7 +10,7 @@ import java.util.List;
  * @Author lvaolin
  * @Date 2021/12/12 22:49
  **/
-class User{
+class Client {
     private Date date = new Date();
     private List<String> list = new ArrayList<>();
     public boolean showDownComputer(Computer computer){
