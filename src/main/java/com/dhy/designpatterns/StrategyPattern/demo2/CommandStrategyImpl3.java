@@ -1,4 +1,4 @@
-package com.dhy.designpatterns.StrategyPattern.demo1;
+package com.dhy.designpatterns.StrategyPattern.demo2;
 
 public class CommandStrategyImpl3 implements ICommandStrategy {
     static {//加载自动注册到策略上下文中

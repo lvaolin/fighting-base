@@ -1,11 +1,11 @@
-package com.dhy.designpatterns.StrategyPattern.demo2;
+package com.dhy.designpatterns.StrategyPattern.demo1;
 
 import java.util.LinkedList;
 import java.util.List;
 
 /**
  * @Title ShortestRouteStrategy
- * @Description  里程最短路线
+ * @Description 里程最短路线
  * @Author lvaolin
  * @Date 2022/1/9 11:31
  **/

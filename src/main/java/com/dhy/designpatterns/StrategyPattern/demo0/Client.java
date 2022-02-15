@@ -1,4 +1,4 @@
-package com.dhy.designpatterns.StrategyPattern.demo2;
+package com.dhy.designpatterns.StrategyPattern.demo0;
 
 import java.util.List;
 
@@ -9,9 +9,8 @@ import java.util.List;
  * @Date 2022/1/9 11:38
  **/
 public class Client {
-
     public static void main(String[] args) {
-
+        //地图导航策略
         //策略上下文
         RouteStrategyContext routeStrategyContext = new RouteStrategyContext();
 
@@ -24,9 +23,5 @@ public class Client {
         routeStrategyContext.setRouteStrategy(new FastestRouteStrategy());
         routes = routeStrategyContext.buildRoute("a", "e");
         routes.stream().forEach((route)->System.out.println(route));
-
-
-
-
     }
 }

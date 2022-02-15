@@ -1,4 +1,4 @@
-package com.dhy.designpatterns.StrategyPattern.demo1;
+package com.dhy.designpatterns.StrategyPattern.demo2;
 
 public class CommandStrategyImpl1 implements ICommandStrategy {
     static {

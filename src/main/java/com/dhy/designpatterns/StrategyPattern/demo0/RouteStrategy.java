@@ -1,4 +1,4 @@
-package com.dhy.designpatterns.StrategyPattern.demo2;
+package com.dhy.designpatterns.StrategyPattern.demo0;
 
 import java.util.List;
 

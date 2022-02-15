@@ -1,4 +1,4 @@
-package com.dhy.designpatterns.StrategyPattern.demo1;
+package com.dhy.designpatterns.StrategyPattern.demo2;
 
 import lombok.SneakyThrows;
 
@@ -12,9 +12,9 @@ public class CommandStrategyContext {
     static {
         //触发所有策略的自动注册
         try {
-            Class.forName("com.dhy.designpatterns.StrategyPattern.demo1.CommandStrategyImpl1");
-            Class.forName("com.dhy.designpatterns.StrategyPattern.demo1.CommandStrategyImpl2");
-            Class.forName("com.dhy.designpatterns.StrategyPattern.demo1.CommandStrategyImpl3");
+            Class.forName("com.dhy.designpatterns.StrategyPattern.demo2.CommandStrategyImpl1");
+            Class.forName("com.dhy.designpatterns.StrategyPattern.demo2.CommandStrategyImpl2");
+            Class.forName("com.dhy.designpatterns.StrategyPattern.demo2.CommandStrategyImpl3");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }

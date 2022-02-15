@@ -1,22 +1,20 @@
-package com.dhy.designpatterns.StrategyPattern.demo2;
+package com.dhy.designpatterns.StrategyPattern.demo0;
 
 import java.util.LinkedList;
 import java.util.List;
 
 /**
- * @Title FastestRouteStrategy
- * @Description 耗时最短路线
+ * @Title ShortestRouteStrategy
+ * @Description  里程最短路线
  * @Author lvaolin
  * @Date 2022/1/9 11:31
  **/
-public class FastestRouteStrategy implements RouteStrategy {
-
+public class ShortestRouteStrategy implements RouteStrategy {
     @Override
     public List<String> buildRoute(String from, String to) {
         LinkedList<String> strings = new LinkedList<>();
         strings.add("a");
-        strings.add("d");
-        strings.add("f");
+        strings.add("b");
         strings.add("e");
         return strings;
     }

@@ -1,4 +1,4 @@
-package com.dhy.designpatterns.StrategyPattern.demo2;
+package com.dhy.designpatterns.StrategyPattern.demo0;
 
 import lombok.Data;
 
@@ -13,21 +13,16 @@ import java.util.List;
 
 @Data
 public class RouteStrategyContext {
-
      private RouteStrategy routeStrategy;
-
      public RouteStrategyContext(){
-
      }
      public RouteStrategyContext(RouteStrategy routeStrategy){
          this.routeStrategy = routeStrategy;
      }
-
      public List<String> buildRoute(String from,String to){
          if (routeStrategy==null) {
              throw new RuntimeException("没有设置策略");
          }
          return routeStrategy.buildRoute(from,to);
      }
-
 }

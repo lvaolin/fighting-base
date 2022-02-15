@@ -1,13 +1,13 @@
 /**
  * @Title package-info
- * @Description  消除客户端里的if else
+ * @Description
  *
- * 用到了 Class.forName来加载所有策略
- * 并注册到 策略上下文集合中
+ * 这个例子是要消除  client中的 if else
+ * 把if else 转移到策略上下文中
  *
- * 模仿了 JDBC驱动的加载注册方式
+ * 缺点是不符合开闭原则，增加策略 仍然需要修改 上下文中的if else 代码
  *
  * @Author lvaolin
- * @Date 2022/1/9 11:25
+ * @Date 2022/1/9 11:50
  **/
 package com.dhy.designpatterns.StrategyPattern.demo1;
