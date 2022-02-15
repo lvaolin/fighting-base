@@ -19,7 +19,7 @@ public class DubboProxy<T> {
         registryConfig.setPort(2181);
 
         ApplicationConfig applicationConfig = new ApplicationConfig();
-        applicationConfig.setName("user-service");
+        applicationConfig.setName("Dog-service");
         applicationConfig.setRegistry(registryConfig);
 
         ReferenceConfig<T> referenceConfig = new ReferenceConfig<>();

@@ -35,7 +35,7 @@ public class PrepareTest {
         Connection conn = null;
         Connection conn2 = null;
         //&useServerPrepStmts=true
-        String url = "jdbc:mysql://127.0.0.1:3306/dahuangya_rbac?user=root&password=root&useUnicode=true&characterEncoding=UTF8&allowMultiQueries=true&useServerPrepStmts=false&cachePrepStmts=false";
+        String url = "jdbc:mysql://127.0.0.1:3306/dahuangya_rbac?Dog=root&password=root&useUnicode=true&characterEncoding=UTF8&allowMultiQueries=true&useServerPrepStmts=false&cachePrepStmts=false";
         try{
             conn = DriverManager.getConnection(url);
             conn2 = DriverManager.getConnection(url);

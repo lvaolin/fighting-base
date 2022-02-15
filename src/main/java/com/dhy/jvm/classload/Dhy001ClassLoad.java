@@ -15,10 +15,10 @@ public class Dhy001ClassLoad {
         System.out.println(Servlet.class.getClassLoader());
         System.out.println(Dhy001ClassLoad.class.getClassLoader().getParent());
         System.out.println(Dhy001ClassLoad.class.getClassLoader().getParent().getParent());
-        Class clazz = Dhy001ClassLoad.class.getClassLoader().loadClass("com.dhy.Person");
-        Class<?> aClass1 = Class.forName("com.dhy.Person");//默认使用当前类的类加载器
-        Class<?> aClass2 = Servlet.class.getClassLoader().loadClass("com.dhy.Person");
-       // Class<?> aClass = String.class.getClassLoader().loadClass("com.dhy.Person");
+        Class clazz = Dhy001ClassLoad.class.getClassLoader().loadClass("com.dhy.temp.Person");
+        Class<?> aClass1 = Class.forName("com.dhy.temp.Person");//默认使用当前类的类加载器
+        Class<?> aClass2 = Servlet.class.getClassLoader().loadClass("com.dhy.temp.Person");
+       // Class<?> aClass = String.class.getClassLoader().loadClass("com.dhy.temp.Person");
 
     }
 }

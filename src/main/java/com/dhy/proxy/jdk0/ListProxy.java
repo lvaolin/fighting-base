@@ -1,4 +1,4 @@
-package com.dhy.proxy.demo;
+package com.dhy.proxy.jdk0;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -19,6 +19,12 @@ public class ListProxy {
                     @Override
                     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
                         System.out.println("=========proxy=========");
+                        if (method.getName().equals("add")) {
+                            System.out.println("add 操作");
+                        }
+                        if (method.getName().equals("get")) {
+                            System.out.println("get 操作");
+                        }
                         return method.invoke(list, args);
                     }
                 }

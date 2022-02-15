@@ -1,13 +1,13 @@
-package com.dhy.proxy.jdk;
+package com.dhy.proxy.cglibInterface;
+
 
 /**
  * @author lvaolin
- * @create 2020/4/13 5:55 PM
+ * @create 2020/4/14 10:49 AM
  */
 public class Person implements IPerson {
     @Override
-    public String eat() {
+    public void eat(){
         System.out.println("吃饭");
-        return null;
     }
 }

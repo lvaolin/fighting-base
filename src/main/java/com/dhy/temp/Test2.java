@@ -1,6 +1,5 @@
-package com.dhy;
+package com.dhy.temp;
 
-import java.util.concurrent.Callable;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -13,17 +12,17 @@ import java.util.concurrent.TimeUnit;
  * @author lvaolin
  * @create 18/4/17 上午11:03
  */
-public class Test {
+public class Test2 {
 
     public static void main(String[] args) {
         for (int i = 0; i <10 ; i++) {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    synchronized (Test.class){
+                    synchronized (Test2.class){
                         try {
                             System.out.println(Thread.currentThread().getName()+"我要进入wait状态了");
-                            Test.class.wait();
+                            Test2.class.wait();
                             System.out.println(Thread.currentThread().getName()+"我被唤醒了");
                         } catch (InterruptedException e) {
                             e.printStackTrace();
@@ -44,9 +43,9 @@ public class Test {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                synchronized (Test.class){
+                synchronized (Test2.class){
 
-                        Test.class.notifyAll();
+                        Test2.class.notifyAll();
                         System.out.println(Thread.currentThread().getName()+"唤醒wait状态的线程");
                 }
 

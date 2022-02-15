@@ -8,7 +8,7 @@ import org.springframework.aop.framework.ProxyFactory;
  * @author lvaolin
  * @create 2020/1/22 3:08 PM
  */
-public class SpringAopDemo {
+public class Client {
 
     public static void main(String[] args) {
 

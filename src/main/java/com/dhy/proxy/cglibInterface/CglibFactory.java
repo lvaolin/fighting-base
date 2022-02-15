@@ -1,9 +1,10 @@
-package com.dhy.proxy.cglib;
+package com.dhy.proxy.cglibInterface;
 
 import net.sf.cglib.proxy.Callback;
 import net.sf.cglib.proxy.Enhancer;
 
 /**
+ * 简单工厂设计模式
  * @author lvaolin
  * @create 2020/4/14 11:02 AM
  */

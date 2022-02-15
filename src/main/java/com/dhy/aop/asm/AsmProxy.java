@@ -9,7 +9,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Method;
 
-public class CostTime {
+/**
+ * 通过asm实现接口性能监测
+ */
+public class AsmProxy {
     public static void main(String[] args) {
         redefineHelloClass();
     }
@@ -107,7 +110,6 @@ public class CostTime {
 
     /**
      * 自定义ClassLoader以支持加载字节数组形式的字节码
-     * @author dadiyang
      */
    static class MyClassLoader extends ClassLoader {
         public Class<?> defineClass(String name, byte[] b) {

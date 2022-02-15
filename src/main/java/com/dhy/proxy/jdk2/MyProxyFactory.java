@@ -1,4 +1,4 @@
-package com.dhy.proxy.jdk;
+package com.dhy.proxy.jdk2;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -8,14 +8,11 @@ import java.lang.reflect.Proxy;
  * @author lvaolin
  * @create 2020/4/13 5:56 PM
  */
-public class MyProxyBetter implements InvocationHandler{
+public class MyProxyFactory implements InvocationHandler{
 
-    Object origin;
-    public MyProxyBetter(Object origin){
+    private Object origin;
+    public MyProxyFactory(Object origin){
         this.origin = origin;
-    }
-    public static Object getInstance(Object origin){
-        return Proxy.newProxyInstance(origin.getClass().getClassLoader(),origin.getClass().getInterfaces(),new MyProxyBetter(origin));
     }
 
     @Override
@@ -25,4 +22,14 @@ public class MyProxyBetter implements InvocationHandler{
         System.out.println("after");
         return result;
     }
+
+    /**
+     * 获取代理对象
+     * @param origin 原始对象
+     * @return 代理对象
+     */
+    public static Object getInstance(Object origin){
+        return Proxy.newProxyInstance(origin.getClass().getClassLoader(),origin.getClass().getInterfaces(),new MyProxyFactory(origin));
+    }
+
 }

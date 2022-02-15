@@ -1,7 +1,7 @@
 package com.dhy.designpatterns.chainOfResponsibility.linkedChain;
 
 /**
- * @Title Client
+ * @Title Client1
  * @Description
  * @Author lvaolin
  * @Date 2022/1/1 16:47

@@ -3,7 +3,7 @@ package com.dhy.designpatterns.command.demo3;
 import com.dhy.designpatterns.command.demo2.Command;
 
 /**
- * @Title Client
+ * @Title Client1
  * @Description
  * @Author lvaolin
  * @Date 2022/2/6 21:38

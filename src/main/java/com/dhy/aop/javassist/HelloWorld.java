@@ -1,4 +1,4 @@
-package com.dhy.aop.asm;
+package com.dhy.aop.javassist;
 
 /**
  * 模拟被代理的对象

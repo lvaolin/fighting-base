@@ -3,7 +3,7 @@ package com.dhy.designpatterns.adapter.demo2;
 import com.dhy.designpatterns.adapter.demo2.log4j.Log4jAdapter;
 
 /**
- * @Title Client
+ * @Title Client1
  * @Description
  * @Author lvaolin
  * @Date 2022/1/9 16:42
