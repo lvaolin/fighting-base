@@ -19,6 +19,8 @@ public class SimpleAppendUpdateTimeVisitor extends MySqlASTVisitorAdapter {
 
     private static final String UPDATE_TIME_COLUMN = "update_time";
 
+
+
     @Override
     public boolean visit(MySqlInsertStatement x) {
         boolean hasUpdateTimeCol = false;
