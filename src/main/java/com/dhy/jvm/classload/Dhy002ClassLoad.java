@@ -8,7 +8,7 @@ import java.lang.reflect.Method;
  */
 public class Dhy002ClassLoad {
     public static void main(String[] args) throws ClassNotFoundException {
-        Class clazz = Dhy002ClassLoad.class.getClassLoader().loadClass("com.dhy.Person");
+        Class clazz = Dhy002ClassLoad.class.getClassLoader().loadClass("com.dhy.temp.Person");
         //打印所有方法名称
         for (Method method : clazz.getDeclaredMethods()) {
             System.out.println(method.getName());

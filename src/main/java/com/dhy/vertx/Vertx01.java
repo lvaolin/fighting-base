@@ -15,7 +15,7 @@ import static io.vertx.core.json.Json.encode;
 public class Vertx01 {
 
     /**
-     * Vert.x Web Client（Web客户端）是一个异步的 HTTP 和 HTTP/2 客户端。
+     * Vert.x Web Client1（Web客户端）是一个异步的 HTTP 和 HTTP/2 客户端。
      *
      * Web Client使得发送 HTTP 请求以及从 Web 服务器接收 HTTP 响应变得更加便捷，同时提供了额外的高级功能，例如：
      *     JSON体的编码和解码

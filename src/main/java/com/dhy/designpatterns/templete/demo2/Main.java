@@ -15,15 +15,15 @@ package com.dhy.designpatterns.templete.demo2;
  */
 public class Main {
     public static void main(String[] args) {
-        ServiceBase serviceBase = new MyService1();
-        serviceBase.templateMethod();
+        ServiceTemplate template1 = new MyService1();
+        template1.templateMethod();
 
-        serviceBase = new MyService2();
-        serviceBase.templateMethod();
+        ServiceTemplate template2 = new MyService2();
+        template2.templateMethod();
     }
 }
 
-abstract class ServiceBase{
+abstract class ServiceTemplate {
     //不让子类覆盖这个模板方法
     final void templateMethod(){
         m1();
@@ -40,14 +40,14 @@ abstract class ServiceBase{
     }
 }
 
-class MyService1 extends ServiceBase{
+class MyService1 extends ServiceTemplate {
     @Override
     void m2() {
         System.out.println("MyService1 第二步实现");
     }
 }
 
-class MyService2 extends ServiceBase{
+class MyService2 extends ServiceTemplate {
     @Override
     void m2() {
         System.out.println("MyService2 第二步实现");

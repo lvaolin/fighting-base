@@ -1,7 +1,7 @@
 package com.dhy.designpatterns.adapter.demo1;
 
 /**
- * @Title Client
+ * @Title Client1
  * @Description
  * @Author lvaolin
  * @Date 2022/1/9 16:07

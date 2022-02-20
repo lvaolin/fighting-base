@@ -9,7 +9,6 @@ package com.dhy.designpatterns.simpleFactory;
 public class MobileFactory {
 
     Mobile getMobile(String brand){
-
         switch (brand){
             case "apple":
                 return new AppleMobile();

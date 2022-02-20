@@ -5,12 +5,12 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * @Title Test
+ * @Title Test2
  * @Description
  * @Author lvaolin
  * @Date 2021/12/12 22:49
  **/
-class User{
+class Client {
     private Date date = new Date();
     private List<String> list = new ArrayList<>();
     public boolean showDownComputer(Computer computer){

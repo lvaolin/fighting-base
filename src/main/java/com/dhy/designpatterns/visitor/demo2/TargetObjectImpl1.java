@@ -7,15 +7,12 @@ package com.dhy.designpatterns.visitor.demo2;
  * @Date 2022/2/12 19:39
  **/
 public class TargetObjectImpl1 implements ITagetObject {
-
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
-
     private String name="dhy1";
     @Override
     public String accept(IVisitor visitor) {

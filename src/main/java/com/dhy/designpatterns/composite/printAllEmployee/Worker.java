@@ -5,17 +5,17 @@ import lombok.Data;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 员工
+ */
 @Data
 public class Worker implements IComponent{
    private String name;
-   private String dept;
    private int salary;
    private List<IComponent> subordinates = new ArrayList<>(0);
 
-   //构造函数
-   public Worker(String name, String dept, int sal) {
+   public Worker(String name, int sal) {
       this.name = name;
-      this.dept = dept;
       this.salary = sal;
    }
 
@@ -36,10 +36,10 @@ public class Worker implements IComponent{
    public void print(int depth){
       String pre = "";
       for(int i=0; i<depth; i++) {
-         pre +="-";
+         pre +="----";
       }
-      System.out.println(pre+":"+name+","+dept+","+salary);
-      for (IComponent subordinate : subordinates) {
+      System.out.println(pre+"姓名:"+name+",薪资:"+salary);
+      for (IComponent subordinate : getSubordinates()) {
          subordinate.print(depth+1);
       }
 

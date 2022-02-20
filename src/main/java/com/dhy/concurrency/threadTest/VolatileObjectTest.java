@@ -48,7 +48,7 @@ public class VolatileObjectTest implements  Runnable {
         Thread.sleep(1000);
         test.stop();
         Thread.sleep(1000);
-        System.out.println("Main Thread " + test.getA().isFlag());
+        System.out.println("Client1 Thread " + test.getA().isFlag());
     }
 
     static class ObjectA {
