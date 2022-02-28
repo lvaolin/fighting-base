@@ -17,7 +17,14 @@ import java.util.List;
 
 /**
  * @Project fighting-core
- * @Description 主要用途描述
+ * @Description 修改表名称
+ * 只覆盖了一个方法就搞定了，我们的目标是 只修改表名称，所以只覆盖下面的方法即可
+ * visit(SQLExprTableSource x)
+ * 这是因为 SQLStatement 实现类应用了 组合模式 ，能达到遍历整个语法树的目的
+ * 在遍历过程中 只需要判断 节点类型 是否为 SQLExprTableSource 即可，
+ * 这个节点就是 最简单的表名称节点（叶子节点）
+ * ，如果是，处理即可。
+ *
  * @Author lvaolin
  * @Date 2022/2/28 上午9:00
  */
@@ -150,8 +157,7 @@ public class MyVisitor2 {
         private boolean rewrite = false;
 
         @Override
-        public boolean visit(SQLExprTableSource x){
-            SQLExprTableSource tableSource = (SQLExprTableSource)x;
+        public boolean visit(SQLExprTableSource tableSource){
             String tableName = tableSource.getTableName();
             //查询分表配置信息，确认此表是否需要分表
             if (true) {

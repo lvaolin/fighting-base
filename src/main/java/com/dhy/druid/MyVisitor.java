@@ -1,15 +1,7 @@
 package com.dhy.druid;
 
-import com.alibaba.druid.filter.FilterChain;
-import com.alibaba.druid.proxy.jdbc.ConnectionProxy;
-import com.alibaba.druid.proxy.jdbc.PreparedStatementProxy;
-import com.alibaba.druid.proxy.jdbc.StatementProxy;
 import com.alibaba.druid.sql.SQLUtils;
-import com.alibaba.druid.sql.ast.SQLExpr;
-import com.alibaba.druid.sql.ast.SQLName;
-import com.alibaba.druid.sql.ast.SQLObject;
 import com.alibaba.druid.sql.ast.SQLStatement;
-import com.alibaba.druid.sql.ast.expr.SQLBinaryOpExpr;
 import com.alibaba.druid.sql.ast.statement.*;
 import com.alibaba.druid.sql.dialect.mysql.ast.clause.MySqlSelectIntoStatement;
 import com.alibaba.druid.sql.dialect.mysql.ast.statement.*;
@@ -21,7 +13,10 @@ import java.util.List;
 
 /**
  * @Project fighting-core
- * @Description 主要用途描述
+ * @Description
+ * 在这个方法中，我企图自己遍历各种SQL情况修改 表名称 ，但是这个思路是不正确的，
+ * 因为每个 sql 都不一样，下级节点非常多，如果要考虑完整，工作量会是巨大的。
+ * 面对树状结构的处理方法中 组合模式 才是正确的方案，druid已经为我们做好了准备，参考 MyVisitor2。
  * @Author lvaolin
  * @Date 2022/2/28 上午9:00
  */
@@ -184,8 +179,6 @@ public class MyVisitor {
         }
         @Override
         public boolean visit(SQLUnionQuery x){
-
-            //解析语法树，修改语法树
             List<SQLSelectQuery> children = x.getChildren();
             for (SQLSelectQuery child : children) {
                 if (child instanceof MySqlSelectQueryBlock) {
@@ -199,21 +192,12 @@ public class MyVisitor {
 
         @Override
         public boolean visit(MySqlSelectQueryBlock x){
-
-            //解析语法树，修改语法树
-            //SQLTableSource sqlTableSource = x.getFrom();
-            updateTableSource(x);
-            return true;
+            SQLTableSource sqlTableSource = x.getFrom();
+            updateTableSource(sqlTableSource);
+            return false;
         }
 
-        @Override
-        public boolean visit(SQLJoinTableSource x){
-            updateTableSource(x);
-            return true;
-        }
-
-
-        private void updateTableSource(SQLObject sqlTableSource) {
+        private void updateTableSource(SQLTableSource sqlTableSource) {
             if (sqlTableSource instanceof SQLExprTableSource) {
                 SQLExprTableSource tableSource = (SQLExprTableSource)sqlTableSource;
                 String tableName = tableSource.getTableName();
