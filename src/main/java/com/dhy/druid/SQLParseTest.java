@@ -50,39 +50,7 @@ public class SQLParseTest {
 
             System.out.println(sb.toString());
 
-//
-//
-//
-//            if (statement instanceof SQLSelectStatement) {
-//                SchemaStatVisitor schemaStatVisitor = new SchemaStatVisitor(dbType);
-//                statement.accept(schemaStatVisitor);
-//
-//                //解析表名
-//                SQLSelectStatement selectStatement = (SQLSelectStatement) statement;
-//                SQLSelectQueryBlock queryBlock =  selectStatement.getSelect().getFirstQueryBlock();
-//                SQLTableSource from = queryBlock.getFrom();
-//
-//                SQLJoinTableSource sqlJoinTableSource = (SQLJoinTableSource) from;
-//                System.out.println(sqlJoinTableSource.getLeft().toString());
-//                System.out.println(sqlJoinTableSource.getCondition().toString());
-//                System.out.println(sqlJoinTableSource.getJoinType().toString());
-//                System.out.println(sqlJoinTableSource.getRight().toString());
-//               // System.out.println(sqlJoinTableSource.getUdj().toString());
-//                //System.out.println(sqlJoinTableSource.getUsing().toString());
-//
-//
-//                for (SQLSelectItem sqlSelectItem : queryBlock.getSelectList()) {
-//                    System.out.println(sqlSelectItem.getExpr().toString());
-//                }
-//
-//                for (SQLSelectOrderByItem item : queryBlock.getOrderBy().getItems()) {
-//                    System.out.println(item.toString());
-//                }
-//                SQLLimit limit = queryBlock.getLimit();
-//             //   System.out.println(limit.getOffset().toString());
-//                System.out.println(limit.getRowCount().toString());
-//
-//            }
+
         }
 
 
