@@ -13,6 +13,7 @@ public class CompletableFutureDemo {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
 
+        ExecutorService executorService = Executors.newFixedThreadPool(2);
 
         CompletableFuture<Void> voidCompletableFuture = CompletableFuture.runAsync(new Runnable() {
             @Override
@@ -24,10 +25,22 @@ public class CompletableFutureDemo {
                     e.printStackTrace();
                 }
             }
-        });
+        },executorService);
 
         voidCompletableFuture.thenRun(() -> {
             System.out.println("----2----");
+        }).get();
+
+
+
+
+        CompletableFuture<String> c2 = CompletableFuture.supplyAsync(()->{
+            System.out.println("3");
+            return "okl";
+        },executorService);
+        String s2 = c2.get();
+        c2.thenRun(() -> {
+            System.out.println("----4----");
         }).get();
 
 
