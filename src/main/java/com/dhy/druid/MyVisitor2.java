@@ -125,6 +125,7 @@ public class MyVisitor2 {
 
         for (String sql : sqlList) {
             String newSQL = getNewSQL(sql);
+            System.out.println("---------------------------------------------");
         }
 
     }
