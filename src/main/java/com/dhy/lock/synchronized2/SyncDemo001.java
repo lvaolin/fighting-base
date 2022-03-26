@@ -1,4 +1,4 @@
-package com.dhy.lock.syncrinized;
+package com.dhy.lock.synchronized2;
 
 import lombok.SneakyThrows;
 
