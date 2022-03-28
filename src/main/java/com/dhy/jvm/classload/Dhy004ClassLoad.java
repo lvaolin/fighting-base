@@ -11,7 +11,8 @@ import java.util.regex.Matcher;
 public class Dhy004ClassLoad extends ClassLoader {
     @Override
     protected Class<?> findClass(String name) throws ClassNotFoundException {
-        //实现步骤 1、 通过 File 类把 class文件读取到内存 ，转换成 字节数组 byte[]
+        //实现步骤
+        // 1、 通过 File 类把 class文件读取到内存 ，转换成 字节数组 byte[]
         //2、 使用 defineClass方法 实例化后返回
         File file = new File("C:\\code_github\\idcreateservice\\target\\classes",name.replaceAll("\\.", Matcher.quoteReplacement(File.separator)).concat(".class"));
 

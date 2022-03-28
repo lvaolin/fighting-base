@@ -11,54 +11,43 @@ import java.util.regex.Matcher;
  * 1、继承 ClassLoader 类
  * 2、覆盖 findClass 方法
  * （通过 File 类把 class文件读取到内存 ，转换成 字节数组 byte[]，再通过父类的 defineClass方法 实例化后返回 Class）
- * 3、classFilePath 不能和 AppClassLoad的classpath相同，
+ * 3、classFilePath 不能和 AppClassLoad的classpath相同(根据双亲委派模型，优先加载父加载器里的同名类，自定义加载器的父加载器是AppClassLoad)，
  * 否则需要的类会被AppClassLoad加载进来（MyClassLoad的parent是AppClassLoad）
  * 4、也就是说自定义类加载器需要把类放到JVM classpath之外的一个目录中
  */
 public class MyClassLoad extends ClassLoader{
-    private String classFilePath;
-    private MyClassLoad(){
+    private String classPath;
 
-    }
-    private MyClassLoad(String classFilePath){
-        this.classFilePath = classFilePath;
+    public MyClassLoad(String classPath) {
+        this.classPath = classPath;
     }
 
-    @Override
+    private byte[] loadByte(String name) throws Exception {
+        name = name.replaceAll("\\.", "/");
+        FileInputStream fis = new FileInputStream(classPath + "/" + name
+                + ".class");
+        int len = fis.available();
+        byte[] data = new byte[len];
+        fis.read(data);
+        fis.close();
+        return data;
+
+    }
+
     protected Class<?> findClass(String name) throws ClassNotFoundException {
-        //实现步骤
-        //1、 通过 File 类把 class文件读取到内存 ，转换成 字节数组 byte[]
-        //2、 使用 defineClass方法 实例化后返回
-        File file = new File(classFilePath,name.replaceAll("\\.", Matcher.quoteReplacement(File.separator)).concat(".class"));
-
-        if (!file.exists()) {
-            System.out.println("不存在file"+file.getPath()+file.getName());
-        }
-
         try {
-            FileInputStream fileInputStream = new FileInputStream(file);
-            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-            int b = 0;
-            while ((b = fileInputStream.read()) != 0) {
-                byteArrayOutputStream.write(b);
-            }
-
-            byte[] bytes = byteArrayOutputStream.toByteArray();
-            byteArrayOutputStream.close();
-            fileInputStream.close();
-            System.out.println(name);
-            return super.defineClass(name,bytes,0,bytes.length);
+            byte[] data = loadByte(name);
+            return defineClass(name, data, 0, data.length);
         } catch (Exception e) {
             e.printStackTrace();
+            throw new ClassNotFoundException();
         }
-
-        return super.findClass(name);
     }
 
 
     public static void main(String[] args) throws ClassNotFoundException {
-        ClassLoader classLoader = new MyClassLoad("/Users/lvaolin/Downloads/classes/");
-        Class<?> aClass = classLoader.loadClass("com.dhy.concurrency.threadTest.A");
+        ClassLoader classLoader = new MyClassLoad("/Users/lvaolin/Downloads/classes");
+        Class<?> aClass = classLoader.loadClass("com.dhy.cas.Singleton");
 
         for (Method declaredMethod : aClass.getDeclaredMethods()) {
             System.out.println(declaredMethod);
