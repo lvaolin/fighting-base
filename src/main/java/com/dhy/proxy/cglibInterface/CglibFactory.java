@@ -9,10 +9,17 @@ import net.sf.cglib.proxy.Enhancer;
  * @create 2020/4/14 11:02 AM
  */
 public class CglibFactory {
-    public static Object getInstance(Class target, Callback callback){
+    public static<T,R> R getProxy(Class<T> target, Callback callback, Class[] argumentTypes, Object[] arguments){
         Enhancer enhancer = new Enhancer();
         enhancer.setSuperclass(target);
         enhancer.setCallback(callback);
-        return enhancer.create();
+        if (argumentTypes!=null&&arguments!=null) {
+            //有参构造器
+            return (R)enhancer.create(argumentTypes,arguments);
+        }else{
+            //无参构造器
+            return (R)enhancer.create();
+        }
+
     }
 }

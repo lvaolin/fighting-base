@@ -15,18 +15,25 @@ import java.lang.reflect.Method;
  */
 public class Demo2 {
     public static void main(String[] args) {
-        IPerson person = new CglibFactory<Person,IPerson>().getInstance(Person.class, new MyCglibMethodInterceptor());
+        IPerson person = CglibFactory.getProxy(Person.class, new MyCglibMethodInterceptor(),null,null);
         person.eat();
     }
 
 }
 
-class CglibFactory<T,R> {
-    public R getInstance(Class<T> target, Callback callback){
+class CglibFactory {
+    public static<T,R> R getProxy(Class<T> target, Callback callback, Class[] argumentTypes, Object[] arguments){
         Enhancer enhancer = new Enhancer();
         enhancer.setSuperclass(target);
         enhancer.setCallback(callback);
-        return (R)enhancer.create();
+        if (argumentTypes!=null&&arguments!=null) {
+            //有参构造器
+            return (R)enhancer.create(argumentTypes,arguments);
+        }else{
+            //无参构造器
+            return (R)enhancer.create();
+        }
+
     }
 }
 interface IPerson{

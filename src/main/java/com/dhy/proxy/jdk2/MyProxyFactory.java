@@ -28,8 +28,8 @@ public class MyProxyFactory implements InvocationHandler{
      * @param origin 原始对象
      * @return 代理对象
      */
-    public static Object getInstance(Object origin){
-        return Proxy.newProxyInstance(origin.getClass().getClassLoader(),origin.getClass().getInterfaces(),new MyProxyFactory(origin));
+    public static <R> R getInstance(Object origin){
+        return (R)Proxy.newProxyInstance(origin.getClass().getClassLoader(),origin.getClass().getInterfaces(),new MyProxyFactory(origin));
     }
 
 }

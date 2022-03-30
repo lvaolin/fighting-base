@@ -8,10 +8,10 @@ package com.dhy.proxy.cglibInterface;
 public class Client {
     public static void main(String[] args) {
         //代理有接口的类
-        IPerson person1 = (IPerson) CglibFactory.getInstance(Person.class,new MyCglibMethodInterceptor());
+        IPerson person1 = CglibFactory.getProxy(Person.class,new MyCglibMethodInterceptor(),null,null);
         person1.eat();
         //代理没有接口的类
-        Dog dog = (Dog) CglibFactory.getInstance(Dog.class,new MyCglibMethodInterceptor());
+        Dog dog =CglibFactory.getProxy(Dog.class,new MyCglibMethodInterceptor(),null,null);
         dog.eat();
     }
 }
