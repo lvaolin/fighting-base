@@ -1,4 +1,4 @@
-package com.dhy.lock;
+package com.dhy.lock.AtomicTest;
 
 /**
  * 100个线程同时修改共享变量 i  ，每个线程进行 i++ 操作 1万次。

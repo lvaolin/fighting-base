@@ -1,4 +1,4 @@
-package com.dhy.lock;
+package com.dhy.lock.countDownLatch;
 
 import java.util.concurrent.CountDownLatch;
 

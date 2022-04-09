@@ -1,10 +1,10 @@
-package com.dhy.lock;
+package com.dhy.lock.AtomicTest;
 
 /**
  * @author lvaolin
  * @create 2019/12/25 11:43 AM
  */
-public class JUC01_4 {
+public class JUC01_1 {
 
     public static void main(String[] args){ //这个线程是用来读取flag的值的
         ThreadDemo threadDemo = new ThreadDemo();
@@ -19,7 +19,7 @@ public class JUC01_4 {
     }
 
     static class ThreadDemo implements Runnable{ //这个线程是用来修改flag的值的
-        public volatile   boolean flag = false;
+        public  boolean flag = false;
         @Override
         public void run() {
             try {
