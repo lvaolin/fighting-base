@@ -18,7 +18,6 @@ public class Client {
         countDownLatch.countDown();
 
         countDownLatch.await();
-        countDownLatch.await(1, TimeUnit.SECONDS);
         System.out.println("okl");
     }
 }
