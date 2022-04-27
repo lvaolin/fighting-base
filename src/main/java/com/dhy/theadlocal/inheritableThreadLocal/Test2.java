@@ -1,4 +1,4 @@
-package com.dhy.base.inheritableThreadLocal;
+package com.dhy.theadlocal.inheritableThreadLocal;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
@@ -6,13 +6,13 @@ import java.util.concurrent.Executors;
 
 /**
  * @Project fighting-core
- * @Description 主要用途描述
+ * @Description 手撕一个ThreadLocalUtil工具类，解决线程池场景下  父子线程之间数据传递问题
  * @Author lvaolin
  * @Date 2022/4/26 上午11:25
  */
 public class Test2 {
     static ExecutorService executorService = Executors.newFixedThreadPool(1);
-    {
+    static {
         executorService.submit(new Runnable() {
             @Override
             public void run() {
@@ -137,22 +137,5 @@ class ThreadLocalUtil{
 
     public static void removeTraceId(){
         traceIdThreadLocal.remove();
-    }
-}
-
-class TransmittableThreadLocal<T> extends InheritableThreadLocal<T>{
-    @Override
-    public T get() {
-        return super.get();
-    }
-
-    @Override
-    public void set(T value) {
-        super.set(value);
-    }
-
-    @Override
-    public void remove() {
-        super.remove();
     }
 }

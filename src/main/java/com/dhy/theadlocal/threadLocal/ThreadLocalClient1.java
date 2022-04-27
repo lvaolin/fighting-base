@@ -1,4 +1,4 @@
-package com.dhy.base.threadLocal;
+package com.dhy.theadlocal.threadLocal;
 
 import lombok.SneakyThrows;
 
@@ -6,11 +6,10 @@ import java.lang.ref.WeakReference;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.TimeUnit;
-import java.util.function.Supplier;
 
 /**
  * @Project fighting-core
- * @Description 主要用途描述
+ * @Description 简单的ThreadLocal用法测试
  * @Author lvaolin
  * @Date 2022/4/24 下午2:11
  */
@@ -46,13 +45,8 @@ public class ThreadLocalClient1 {
             }
         }).start();
 
-      //  while (true);
+        while (true);
 
-
-        WeakReference<String> aaa = new WeakReference<>("aaa");
-        aaa.get();
-        aaa.clear();
-        aaa.enqueue();
 
     }
 }

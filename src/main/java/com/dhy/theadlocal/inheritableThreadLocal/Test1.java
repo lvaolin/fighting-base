@@ -1,8 +1,8 @@
-package com.dhy.base.inheritableThreadLocal;
+package com.dhy.theadlocal.inheritableThreadLocal;
 
 /**
  * @Project fighting-core
- * @Description 主要用途描述
+ * @Description 测试InheritableThreadLocal的  父子线程传递数据功能
  * @Author lvaolin
  * @Date 2022/4/26 上午11:25
  */

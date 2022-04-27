@@ -1,4 +1,4 @@
-package com.dhy.base.threadLocal;
+package com.dhy.theadlocal.threadLocal;
 
 import lombok.SneakyThrows;
 
@@ -8,11 +8,10 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.TimeUnit;
-import java.util.function.Supplier;
 
 /**
  * @Project fighting-core
- * @Description 自定义MyMap 实现 和线程绑定的 变量传递， 问题是线程退出后，如何释放map中的资源？
+ * @Description 手撕类似ThreadLocal的功能，自定义MyMap 实现 和线程绑定的 变量传递， 问题是线程退出后，如何释放map中的资源？
  * @Author lvaolin
  * @Date 2022/4/24 下午2:11
  */
