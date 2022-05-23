@@ -1,5 +1,6 @@
 package com.dhy.theadlocal.DhyTaskProxy;
-import java.lang.reflect.InvocationTargetException;
+import lombok.extern.slf4j.Slf4j;
+
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
@@ -8,6 +9,7 @@ import java.util.concurrent.Callable;
 /**
  * 代理类：增加了ThreadLocal上绑定的数据中转功能
  */
+@Slf4j
 public class DhyTaskProxy<V> implements Runnable, Callable {
 
     private Runnable runnable;
@@ -58,13 +60,9 @@ public class DhyTaskProxy<V> implements Runnable, Callable {
         try {
             Object result = method.invoke(null, null);
             localData.put(method.getName(),result);
-            System.out.println(method.getName()+" invoke");
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
-        }catch (Throwable t){
-            t.printStackTrace();
+            log.info(method.getName()+" invoke");
+        } catch (Throwable t){
+            log.error(t.getMessage(),t);
         }
     }
 
@@ -82,11 +80,9 @@ public class DhyTaskProxy<V> implements Runnable, Callable {
         try {
             Object filedValue = localData.get(method.getName().replaceFirst("s", "g"));
             method.invoke(null, filedValue);
-            System.out.println(method.getName()+" invoke");
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
+            log.info(method.getName()+" invoke");
+        } catch (Throwable t){
+            log.error(t.getMessage(),t);
         }
     }
 
@@ -96,11 +92,9 @@ public class DhyTaskProxy<V> implements Runnable, Callable {
             if (method.getName().startsWith("remove")) {
                 try {
                     method.invoke(null, null);
-                    System.out.println(method.getName()+" invoke");
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                } catch (InvocationTargetException e) {
-                    e.printStackTrace();
+                    log.info(method.getName()+" invoke");
+                } catch (Throwable t){
+                    log.error(t.getMessage(),t);
                 }
             }
         }

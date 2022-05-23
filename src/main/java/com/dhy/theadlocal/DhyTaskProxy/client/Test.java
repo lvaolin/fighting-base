@@ -70,6 +70,14 @@ public class Test {
             }
         },ThreadLocalHolder.class)).start();
 
+
+        Executors.defaultThreadFactory().newThread(new DhyTaskProxy(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("defaultThreadFactory,使用代理Runnable："+ ThreadLocalHolder.getUserId());
+                System.out.println("defaultThreadFactory,使用代理Runnable："+ ThreadLocalHolder.getAppContext().getSessionId());
+            }
+        },ThreadLocalHolder.class)).start();
         System.out.println("over");
         while (true);
     }
