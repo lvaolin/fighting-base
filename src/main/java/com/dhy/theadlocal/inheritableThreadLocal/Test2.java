@@ -1,5 +1,11 @@
 package com.dhy.theadlocal.inheritableThreadLocal;
 
+import lombok.Data;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -24,6 +30,10 @@ public class Test2 {
         //-----主线程绑定数据----
         ThreadLocalUtil.setUserId("1001");
         ThreadLocalUtil.setTraceId("o98iuj76yhe3");
+        AppContext appContext = new AppContext();
+        appContext.setSessionId("dfaegerge45h4w5ehth");
+        appContext.setDbKey("db1000");
+        ThreadLocalUtil.setAppContext(appContext);
 
         //复用核心线程，未使用代理
         executorService.submit(new Runnable() {
@@ -31,6 +41,7 @@ public class Test2 {
             public void run() {
                 System.out.println("未使用代理："+ThreadLocalUtil.getUserId());
                 System.out.println("未使用代理："+ThreadLocalUtil.getTraceId());
+                System.out.println("未使用代理："+ThreadLocalUtil.getAppContext());
             }
         });
 
@@ -40,6 +51,7 @@ public class Test2 {
             public void run() {
                 System.out.println("使用代理Runnable："+ThreadLocalUtil.getUserId());
                 System.out.println("使用代理Runnable："+ThreadLocalUtil.getTraceId());
+                System.out.println("使用代理Runnable："+ThreadLocalUtil.getAppContext());
             }
         }));
 
@@ -49,6 +61,7 @@ public class Test2 {
             public String call() throws Exception {
                 System.out.println("使用代理Callable："+ThreadLocalUtil.getUserId());
                 System.out.println("使用代理Callable："+ThreadLocalUtil.getTraceId());
+                System.out.println("使用代理Callable："+ThreadLocalUtil.getAppContext());
                 return "ok";
             }
         }));
@@ -92,19 +105,68 @@ class TaskProxy<V> implements Runnable, Callable {
 
 
     //------------------------绑定的数据-----------
-    private String userId;
-    private String traceId;
+    private Map<String,Object> localData = new HashMap<>();
     private void storeThreadLocal() {
-        this.userId = ThreadLocalUtil.getUserId();
-        this.traceId = ThreadLocalUtil.getTraceId();
+        Method[] methods = ThreadLocalUtil.class.getDeclaredMethods();
+        for (Method method : methods) {
+            if (method.getName().startsWith("get")) {
+                storeField(method);
+            }
+        }
     }
+
+    private void storeField(Method method) {
+        try {
+            Object result = method.invoke(null, null);
+            localData.put(method.getName(),result);
+            System.out.println(method.getName()+" invoke");
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }catch (Throwable t){
+            t.printStackTrace();
+        }
+    }
+
     private void restoreThreadLocal() {
-        ThreadLocalUtil.setUserId(userId);
-        ThreadLocalUtil.setTraceId(traceId);
+        Method[] methods = ThreadLocalUtil.class.getDeclaredMethods();
+        for (Method method : methods) {
+            if (method.getName().startsWith("set")) {
+                restoreField(method);
+            }
+        }
+
     }
+
+    private void restoreField(Method method) {
+        try {
+            Object filedValue = localData.get(method.getName().replaceFirst("s", "g"));
+            method.invoke(null, filedValue);
+            System.out.println(method.getName()+" invoke");
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
+    }
+
     private void clearThreadLocal() {
-        ThreadLocalUtil.removeUserId();
-        ThreadLocalUtil.removeTraceId();
+//        ThreadLocalUtil.removeUserId();
+//        ThreadLocalUtil.removeTraceId();
+        Method[] methods = ThreadLocalUtil.class.getDeclaredMethods();
+        for (Method method : methods) {
+            if (method.getName().startsWith("remove")) {
+                try {
+                    method.invoke(null, null);
+                    System.out.println(method.getName()+" invoke");
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                } catch (InvocationTargetException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 
 }
@@ -117,11 +179,16 @@ class ThreadLocalUtil{
     //可以使用一个自定义 上下文DTO 来存储数据，就不需要写多个ThreadLocal了
     private static ThreadLocal<String> userIdThreadLocal = new ThreadLocal<>();
     private static ThreadLocal<String> traceIdThreadLocal = new ThreadLocal<>();
+    private static ThreadLocal<AppContext> appContextThreadLocal = new ThreadLocal<>();
+
     public static void setUserId(String userId){
         userIdThreadLocal.set(userId);
     }
     public static void setTraceId(String traceId){
         traceIdThreadLocal.set(traceId);
+    }
+    public static void setAppContext(AppContext appContext){
+        appContextThreadLocal.set(appContext);
     }
 
     public static String getUserId(){
@@ -131,6 +198,10 @@ class ThreadLocalUtil{
         return traceIdThreadLocal.get();
     }
 
+    public static AppContext getAppContext(){
+        return appContextThreadLocal.get();
+    }
+
     public static void removeUserId(){
         userIdThreadLocal.remove();
     }
@@ -138,4 +209,15 @@ class ThreadLocalUtil{
     public static void removeTraceId(){
         traceIdThreadLocal.remove();
     }
+
+    public static void removeAppContext(){
+        appContextThreadLocal.remove();
+    }
+}
+
+
+@Data
+class AppContext{
+    private String sessionId;
+    private String dbKey;
 }
