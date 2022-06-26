@@ -19,6 +19,9 @@ import java.util.Arrays;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * dubbo  nativejava 序列化方式测试
+ */
 public class NativeJavaSerializationDemo {
 
     @Test
