@@ -1,5 +1,7 @@
 package com.dhy.json.demo1;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+
 /**
  * 报文转换器
  *
@@ -25,5 +27,5 @@ public interface Parser {
      * @param <T>           泛型
      * @return 解析后得到的响应信息
      */
-    <T> T parse(byte[] responseBytes, String encoding, Class<T> clazz);
+    <T> T parse(byte[] responseBytes, String encoding, TypeReference<T> typeReference);
 }

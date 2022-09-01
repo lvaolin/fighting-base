@@ -57,7 +57,7 @@ class JsonParserTest {
         System.out.println(jsonMsg);
 
         byte[] bytes = str.getBytes(StandardCharsets.UTF_8);
-        JsonMessage<JsonReqHeader, JsonReqBody> msg = parser.parse(bytes, StandardCharsets.UTF_8.name(), JsonMessage.class);
+        JsonMessage<JsonReqHeader, JsonReqBody> msg = parser.parse(bytes, StandardCharsets.UTF_8.name(), new TypeReference<JsonMessage<JsonReqHeader, JsonReqBody>>() {});
         System.out.println(msg);
         System.out.println(objectWriter.writeValueAsString(msg));
     }

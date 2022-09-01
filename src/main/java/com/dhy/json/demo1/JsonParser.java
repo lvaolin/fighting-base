@@ -43,32 +43,20 @@ public class JsonParser implements Parser {
     }
 
     @Override
-    public <T> T parse(byte[] responseBytes, String encoding, Class<T> clazz ) {
+    public <T> T parse(byte[] responseBytes, String encoding, TypeReference<T> typeReference ) {
         if (responseBytes == null || responseBytes.length == 0) {
             return null;
         }
         T responseObj;
 
-//        TypeReference<T> type = new TypeReference<T>() {
-//
-//            @Override
-//            public Type getType() {
-//                return super.getType();
-//            }
-//        };
-//        try {
-//            responseObj = objectMapper.readValue(new String(responseBytes, encoding), type);
-//        } catch (IOException e) {
-//            log.error("[MCIS-SDK] Failed to parse JSON message.", e);
-//            throw new RuntimeException("Transaction failed.");
-//        }
-        String json = null;
         try {
-             json = new String(responseBytes, encoding);
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
+            responseObj = objectMapper.readValue(new String(responseBytes, encoding), typeReference);
+        } catch (IOException e) {
+            log.error("[MCIS-SDK] Failed to parse JSON message.", e);
+            throw new RuntimeException("Transaction failed.");
         }
 
-        return JSONObject.parseObject(json,clazz);
+
+        return responseObj;
     }
 }
