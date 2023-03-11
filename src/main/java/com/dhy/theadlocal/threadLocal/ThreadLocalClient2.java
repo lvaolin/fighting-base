@@ -16,7 +16,8 @@ import java.util.concurrent.TimeUnit;
  * @Date 2022/4/24 下午2:11
  */
 public class ThreadLocalClient2 {
-    static MyMap<String,String> map = new MyMap<String,String>();
+    static MyMap<String, String> map = new MyMap<String, String>();
+
     public static void main(String[] args) {
         ThreadFactory threadFactory = Executors.defaultThreadFactory();
         threadFactory.newThread(new Runnable() {
@@ -24,11 +25,11 @@ public class ThreadLocalClient2 {
             @Override
             public void run() {
                 for (int i = 0; i < 5; i++) {
-                    map.put("name"+i,Thread.currentThread().getName()+"zhangsan"+i);
+                    map.put("name" + i, Thread.currentThread().getName() + "zhangsan" + i);
                     TimeUnit.SECONDS.sleep(1);
-                    System.out.println(Thread.currentThread().getName()+":"+map.get("name"+i));
+                    System.out.println(Thread.currentThread().getName() + ":" + map.get("name" + i));
                 }
-        }
+            }
         }).start();
 
         threadFactory.newThread(new Runnable() {
@@ -36,33 +37,59 @@ public class ThreadLocalClient2 {
             @Override
             public void run() {
                 for (int i = 0; i < 5; i++) {
-                    map.put("name"+i,Thread.currentThread().getName()+"lishi"+i);
+                    map.put("name" + i, Thread.currentThread().getName() + "lishi" + i);
                     TimeUnit.SECONDS.sleep(1);
-                    System.out.println(Thread.currentThread().getName()+":"+map.get("name"+i));
+                    System.out.println(Thread.currentThread().getName() + ":" + map.get("name" + i));
                 }
             }
         }).start();
-        while (true);
+        while (true) ;
     }
 }
 
-class MyMap<K,V> {
-     private Map<Thread,Map<K,V>> threadMap = new ConcurrentHashMap<>();
+class MyMap<K, V> {
+    private Map<Thread, Map<K, V>> threadMap = new ConcurrentHashMap<>();
 
-     public void put(K key,V value){
+    /**
+     * 向线程上注册资源
+     * @param key
+     * @param value
+     */
+    public void put(K key, V value) {
         Map map = threadMap.get(Thread.currentThread());
-        if (map==null) {
-            threadMap.put(Thread.currentThread(),new HashMap());
+        if (map == null) {
+            threadMap.put(Thread.currentThread(), new HashMap());
         }
         map = threadMap.get(Thread.currentThread());
-        map.put(key,value);
-     }
+        map.put(key, value);
+    }
 
-     public V get(K key){
-        Map<K,V> map = threadMap.get(Thread.currentThread());
-        if (map==null) {
+    /**
+     * 获取线程上key对应的资源
+     * @param key
+     * @return
+     */
+    public V get(K key) {
+        Map<K, V> map = threadMap.get(Thread.currentThread());
+        if (map == null) {
             return null;
         }
         return map.get(key);
-     }
+    }
+
+    /**
+     * 释放线程上key对应的资源
+     * @param key
+     * @return
+     */
+    public V remove(K key) {
+        return threadMap.get(Thread.currentThread()).remove(key);
+    }
+
+    /**
+     * 释放线程上的资源
+     */
+    public void remove() {
+        threadMap.remove(Thread.currentThread());
+    }
 }
