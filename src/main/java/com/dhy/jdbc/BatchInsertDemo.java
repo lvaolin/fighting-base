@@ -10,24 +10,24 @@ import java.sql.*;
  */
 public class BatchInsertDemo {
     public static void main(String[] args) throws SQLException {
-//        Connection connection = DriverManager.getConnection("url");
-//        Statement st = connection.createStatement();
-//        st.addBatch("insert into a values(1,2)");
-//        st.clearBatch();
-//        st.executeBatch();
-//        st.executeLargeBatch();
-//
-//
-//        PreparedStatement ps = connection.prepareStatement("insert into a values(?,?)");
-//        ps.setString(1,"a");
-//        ps.setString(2,"b");
-//        ps.addBatch();
-//
-//        ps.clearBatch();
-//        ps.executeBatch();
-//        ps.executeLargeBatch();
-//
-//        connection.commit();
+        Connection connection = DriverManager.getConnection("url");
+        Statement st = connection.createStatement();
+        st.addBatch("insert into a values(1,2)");
+        st.clearBatch();
+        st.executeBatch();
+        st.executeLargeBatch();
+
+
+        PreparedStatement ps = connection.prepareStatement("insert into a values(?,?)");
+        ps.setString(1,"a");
+        ps.setString(2,"b");
+        ps.addBatch();
+
+        ps.clearBatch();
+        ps.executeBatch();
+        ps.executeLargeBatch();
+
+        connection.commit();
 
 
     }
