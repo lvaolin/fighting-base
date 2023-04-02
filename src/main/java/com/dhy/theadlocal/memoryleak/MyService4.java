@@ -9,12 +9,10 @@ import java.io.IOException;
  * @Date 2023/4/1 上午11:41
  */
 public class MyService4 {
-
     public static void main(String[] args) throws IOException, NoSuchFieldException, IllegalAccessException {
         MyService4 myService = new MyService4();
         myService.m1();
     }
-
     public void m1() throws IOException, NoSuchFieldException, IllegalAccessException {
         System.out.println("map初始状态：");
         MyReflectUtil.printThreadLocalMapSize();

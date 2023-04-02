@@ -26,7 +26,7 @@ public class MyService2 {
             //x越小，gc越频繁
             // threadlocal弱引用对象回收越及时，
             // threadlocalMap回收越及时（前面文章讲了什么情况下触发回收）
-            int x = 20;
+            int x = 100;
             if (i%x==0)System.gc();
 
         }

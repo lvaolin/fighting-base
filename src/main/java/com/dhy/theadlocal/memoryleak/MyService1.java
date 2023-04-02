@@ -1,8 +1,6 @@
 package com.dhy.theadlocal.memoryleak;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
-import java.lang.reflect.Field;
 
 /**
  * @Project fighting-core
@@ -26,10 +24,5 @@ public class MyService1 {
         }
         System.out.println("map存储100个条目后：");
         MyReflectUtil.printThreadLocalMapSize();
-
     }
-
-
-
-
 }
