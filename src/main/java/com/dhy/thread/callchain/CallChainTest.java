@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 public class CallChainTest {
     public static void main(String[] args) {
-        A a = new A();
+        AController a = new AController();
         a.m1();
     }
 
     @RequestMapping("/A")
-    static class A{
-        @RequestMapping("/m1")
+    static class AController {
+        @RequestMapping(value = "/m1",params = "txnId=PAY100001")
         void m1(){
             System.out.println("a.m1");
             m2();

@@ -24,13 +24,19 @@ public class Util{
                 }
 
                 Method[] methods = myclass.getDeclaredMethods();
+                boolean flag = false ;
                 for (Method method : methods) {
                     if (method.getName().equals(methodName)) {
                         RequestMapping a = method.getAnnotation(RequestMapping.class);
                         if (a!=null) {
-                            sb.append("path："+classRp+Util.array2string(a.value())+"->");
+                            sb.append("path："+classRp+Util.array2string(a.value())+"?"+Util.array2string(a.params()));
+                            flag = true;
                         }
                     }
+                }
+
+                if (flag&&(className.contains("Controller")||className.contains("Action"))) {
+                    break;
                 }
 
             }
