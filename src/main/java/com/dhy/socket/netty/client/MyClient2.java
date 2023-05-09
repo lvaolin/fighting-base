@@ -6,11 +6,12 @@ import io.netty.channel.ChannelFuture;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioSocketChannel;
+
 /**
  * @author lvaolin
  * @create 2019/7/25 3:47 PM
  */
-public class MyClient {
+public class MyClient2 {
     public static void main(String[] args) throws Exception{
         EventLoopGroup eventLoopGroup = new NioEventLoopGroup();
 

@@ -1,6 +1,8 @@
 package com.dhy.collection;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
@@ -16,5 +18,19 @@ public class MapDemo {
         Map map = new HashMap<String,String>();
         ConcurrentMap<String, String> concurrentHashMap = new ConcurrentHashMap<>();
 
+        List<Object> list = new ArrayList<>();
+        list.add(null);
+        list.add(null);
+        list.add("1");
+        System.out.println(list.size());
+        for (Object o : list) {
+            System.out.println(o);
+        }
+//        list.get(0);
+//        list.remove("");
+//        list.contains("");
+//        list.size();
+//        list.hashCode();
+//        list.equals("");
     }
 }
