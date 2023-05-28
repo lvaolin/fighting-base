@@ -8,18 +8,13 @@ package com.dhy.designpatterns.simpleFactory;
  */
 public class Client {
     public static void main(String[] args) {
-        MobileFactory mobileFactory = new MobileFactory();
-        Mobile appleMobile = mobileFactory.getMobile("apple");
+        Mobile appleMobile = MobileFactory.getMobile("apple");
         System.out.println(appleMobile.getBrand());
-
-        Mobile huaweiMobile = mobileFactory.getMobile("huawei");
+        Mobile huaweiMobile = MobileFactory.getMobile("huawei");
         System.out.println(huaweiMobile.getBrand());
-
-        Mobile xiaomiMobile = mobileFactory.getMobile("xiaomi");
+        Mobile xiaomiMobile = MobileFactory.getMobile("xiaomi");
         System.out.println(xiaomiMobile.getBrand());
-
-        Mobile oppoMobile = mobileFactory.getMobile("oppo");
+        Mobile oppoMobile = MobileFactory.getMobile("oppo");
         System.out.println(oppoMobile.getBrand());
-
     }
 }

@@ -7,8 +7,7 @@ package com.dhy.designpatterns.simpleFactory;
  * @Date 2022/1/17 下午5:39
  */
 public class MobileFactory {
-
-    Mobile getMobile(String brand){
+    public static Mobile getMobile(String brand){
         switch (brand){
             case "apple":
                 return new AppleMobile();
@@ -16,7 +15,7 @@ public class MobileFactory {
                 return new HuaweiMobile();
             case "xiaomi":
                 return new XiaomiMobile();
-            default:return new OppoMobile();
+            default: throw new RuntimeException("参数不合法");
         }
     }
 }
